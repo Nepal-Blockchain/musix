@@ -1,0 +1,87 @@
+{
+    "address": "0x85505E7a4A49a3A0d8f12Fa172f461CE399fE97d",
+    "abi": [{
+        "constant": true,
+        "inputs": [{
+            "name": "",
+            "type": "bytes32"
+        }, {
+            "name": "",
+            "type": "bytes32"
+        }, {
+            "name": "",
+            "type": "bytes32"
+        }],
+        "name": "CD",
+        "outputs": [{
+            "name": "title",
+            "type": "bytes32"
+        }, {
+            "name": "album",
+            "type": "bytes32"
+        }, {
+            "name": "artist",
+            "type": "bytes32"
+        }, {
+            "name": "genre",
+            "type": "bytes32"
+        }, {
+            "name": "ipfs",
+            "type": "bytes"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": true,
+            "name": "genre",
+            "type": "bytes32"
+        }, {
+            "indexed": true,
+            "name": "artist",
+            "type": "bytes32"
+        }, {
+            "indexed": true,
+            "name": "title",
+            "type": "bytes32"
+        }, {
+            "indexed": false,
+            "name": "album",
+            "type": "bytes32"
+        }, {
+            "indexed": false,
+            "name": "id",
+            "type": "bytes"
+        }],
+        "name": "NewMusix",
+        "type": "event"
+    }, {
+        "constant": false,
+        "inputs": [{
+            "name": "_artist",
+            "type": "bytes32"
+        }, {
+            "name": "_album",
+            "type": "bytes32"
+        }, {
+            "name": "_title",
+            "type": "bytes32"
+        }, {
+            "name": "_genre",
+            "type": "bytes32"
+        }, {
+            "name": "_ipfs",
+            "type": "bytes"
+        }],
+        "name": "setMusix",
+        "outputs": [{
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }]
+}

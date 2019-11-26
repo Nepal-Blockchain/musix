@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musix</title>
+    <link rel="stylesheet" type="text/css" href="./static/app.css">
+</head>
+
+<body>
+
+    <header>
+        <a style="background-image: url('./static/filter.svg');" class="_icon" id="filterFileBtn" href="#filterFile"></a>
+        <input type="text" id="search" autocomplete="off" placeholder="Search for a song..." />
+        <div id="logo">musix</div>
+        <a style="background-image: url('./static/add.svg');" class="_icon" id="addFileBtn" href="#addFile" onclick="player.toggleUpload()"> </a>
+    </header>
+    <div id="app">
+        <div id="song-list"></div>
+        <div id="player">
+            <div id="player-placeholder">Press Play or select a song.</div>
+            <div id="cover-lyrics"></div>
+            <div id="cover-overlay"></div>
+            <img id="player-cover" src="./static/music_logo.png" />
+            <div id="player-details">
+                <div id="player-title" class="song-title"></div>
+                <div id="player-artist" class="song-artist"></div>
+                <div id="player-album" class="song-album"></div>
+            </div>
+            <div id="control">
+                <div id="progress"></div>
+                <div id="control-buttons">
+                    <div onclick="player.toggleRepeat()" class="repeat-button" id="repeat-button-inactive" title="Repeat the current song."></div>
+
+                    <div id="previous" onclick="player.prevSong()" title="Jump to the previous song."></div>
+
+                    <div id="skip-backward" onclick="player.skipBackward()" title="Skip 15 seconds forwards."></div>
+
+                    <div id="play-pause" onclick="player.togglePlay()"></div>
+
+                    <div id="skip-forward" onclick="player.skipForward()" title="Skip 15 seconds backwards."></div>
+
+                    <div id="next" onclick="player.nextSong()" title="Jump to the next song."></div>
+
+                    <div id="shuffle" onclick="player.shuffleList()" title="Shuffle songs."></div>
+                    <input id="slider" style="width: 20px;height: 130px;position: absolute;bottom: 70px;right: 15px; opacity: 0.2;writing-mode: bt-lr;-webkit-appearance: slider-vertical;"
+                        orient="vertical" oninput="player.Vol(this.value)" onchange="player.Vol(this.value)" type="range"
+                        step="0.5" value="60" min="0" max="100">
+
+                </div>
+                <audio id="audio">
+                    <source id="source" src="" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div id="addFile" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close _icon" id="addClose">&nbsp;</a>
+            <h1>IPFS</h1>
+            <div id="fileDisplay">
+                <h3>ID3 Tags</h3>
+                <div>
+                    <button id="mp3Select" style="width:100px; height:35px;">Select Audio File</button>
+                    <button id="mp3Select2" style="width:100px; height:35px;" disabled>Enter IPFS hash</button>
+                </div>
+                <img id="_cover" src="./static/music_logo.png">
+                <div style="float:right">
+                    <label>Artist:</label>
+                    <input type="text" id="_artist" placeholder="........."></input>
+                    <br><label>Album:</label>
+                    <input type="text" id="_album" placeholder="........."></input>
+                    <br><label>Song Title:</label>
+                    <input type="text" id="_title" placeholder="........."></input>
+                    <br><label>Genre:</label>
+                    <input type="text" id="_genre" placeholder="........."></input>
+                    <br><label>IPFS Hash:</label>
+                    <input type="text" id="_ipfsHash" placeholder="........." disabled></input>
+                    <button class="btn" id="upload" style="width:100px; height:50px; float:right;" disabled>Upload</button>
+                </div>
+            </div>
+            <div style="float:left;">
+                <br>
+                <span id="status"></span>
+                <span id="balance"></span>
+
+                <span class="hint">
+                    <strong>Test:</strong> open the browser developer console to view any errors and warnings.
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="filterFile" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close _icon" id="filterClose">&nbsp;</a>
+            <h1>Filter</h1>
+            <div id="filterDisplay">
+                <span style="font-size: 1em;">
+                    <label>Artist:</label>
+                    <select id="_artist1" style="font-size: 1em;">
+                        <option value="x1">1asdasdasdasd1</option>
+                        <option value="x2">1qweqweqwe2</option>
+                        <option value="x3">1lkkjwqklejq3</option>
+                        <option value="x4">1qweqweqwe4</option>
+                    </select>
+                </span>
+                <span style="font-size: 1em;">
+                    <label>Genre:</label>
+                    <select id="_genre1" style="font-size: 1em;">
+                        <option value="x1">1qweqwejkq1</option>
+                        <option value="x2">1qweqweqwe2</option>
+                        <option value="x3">1xcvxcv3</option>
+                        <option value="x4">17878ifgdf4</option>
+                    </select>
+                </span>
+                <span style="clear:both;">
+                    <button class="btn" id="filter" style="width:100px; height:50px; float:right;" disabled>Filter</button>
+                </span>
+            </div>
+            <div style="float:left;">
+                <br>
+                <span id="status"></span>
+                <span id="balance"></span>
+
+                <span class="hint">
+                    <strong>Test:</strong> open the browser developer console to view any errors and warnings.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" accept="audio/*" id="mp3File" hidden></input>
+    <script type="text/javascript" src="./app.js"></script>
+
+</body>
+
+</html>
